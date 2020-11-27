@@ -5,7 +5,7 @@ LDFLAGS=-std=c++11
 
 all: $(PROGRAMS)
 
-simple: simple/test.o simple/allocator.o
+simple: src/simple/test.o src/simple/allocator.o
 	g++ $(LDFLAGS) $^ -o $@
 
 %.o: %.cpp *.hpp Makefile
