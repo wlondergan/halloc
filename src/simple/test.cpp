@@ -1,11 +1,21 @@
 #include "allocator.hpp"
 #include <iostream>
-using namespace simple_alloc;
+#include <assert.h>
+using namespace std;
+
+struct LL {
+    int i;
+    LL* next;
+    LL(int i, LL* next): i(i), next(next) {}
+};
 
 int main() {
-    int* a = (int*) alloc(sizeof(int));
-    *a = 5;
-
-    std::cout << a << std::endl;
-    std::cout << *a << std::endl;
+    LL head = LL(0, nullptr);
+    LL* tail = &head;
+    for (int i = 1; i < 10000; i++) {
+        tail->next = (LL*) simple_alloc::malloc(sizeof(LL));
+        tail->next->i = i;
+        tail = tail->next;
+    }
+    assert(head.next->i == 1);
 }
