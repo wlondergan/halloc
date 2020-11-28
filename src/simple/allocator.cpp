@@ -10,7 +10,7 @@ namespace simple_alloc {
     static Allocator a;
 
     void* malloc(std::size_t size) {
-        return a.alloc(size);
+        return a.malloc(size);
     }
 
     void free(void* block) {
@@ -26,7 +26,7 @@ namespace simple_alloc {
         //heap_top = nullptr;
     }
 
-    void* Allocator::alloc(std::size_t size) {
+    void* Allocator::malloc(std::size_t size) {
         size = align(size);
 
         if (Block* b = find_free_block(size)) {

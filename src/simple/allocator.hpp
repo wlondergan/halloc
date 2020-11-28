@@ -22,7 +22,7 @@ namespace simple_alloc {
 
             ~Allocator();
 
-            void* alloc(std::size_t size);
+            void* malloc(std::size_t size);
 
             void free(void* block);
         private:
