@@ -18,4 +18,19 @@ int main() {
         tail = tail->next;
     }
     assert(head.next->i == 1);
+
+    LL* prev = &head;
+    tail = prev->next;
+    for (int i = 0; i < 4999; i++) {
+        prev->next = tail->next; // skip every other element.
+        simple_alloc::free(tail);
+        prev = prev->next;
+        tail = prev->next;
+    }
+
+    tail = &head;
+    for (int i = 0; i < 5000; i++) {
+        cout << tail->i << endl;
+        tail = tail->next;
+    }
 }
